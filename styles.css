@@ -158,7 +158,7 @@ header {
 }
 
 .logo-icon {
-    width: 32px;
+    width: auto;
     height: 32px;
     border-radius: 8px;
     box-shadow: var(--shadow-xs);
