@@ -1,0 +1,804 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800&display=swap');
+
+/* ============================================================
+   DESIGN TOKENS
+   ============================================================ */
+:root {
+    /* Brand Palette — Pastel + Midnight */
+    --white: #FFFFFF;
+    --off-white: #FAFBFC;
+    --bg-warm: #F8F6F1;
+    --card-stroke: #E8E8E8;
+    --text-primary: #1A1F24;
+    --text-secondary: #5A6270;
+    --text-tertiary: #8A919C;
+
+    --pale-blue: #C6E5FF;
+    --pale-blue-muted: rgba(198, 229, 255, 0.25);
+    --olive: #E2F6CA;
+    --olive-muted: rgba(226, 246, 202, 0.25);
+    --peach: #FFE5D9;
+    --peach-muted: rgba(255, 229, 217, 0.2);
+    --lavender: #FFDFFD;
+    --lavender-muted: rgba(255, 223, 253, 0.2);
+
+    --midnight: #1A365D;
+    --midnight-deep: #0F2240;
+    --teal: #2A9D8F;
+
+    /* Shadows */
+    --shadow-xs: 0 1px 3px rgba(0,0,0,0.04);
+    --shadow-sm: 0 4px 12px rgba(0,0,0,0.06);
+    --shadow-md: 0 8px 24px rgba(26, 54, 93, 0.08);
+    --shadow-lg: 0 16px 48px rgba(26, 54, 93, 0.12);
+    --shadow-xl: 0 24px 64px rgba(26, 54, 93, 0.16);
+
+    /* Typography */
+    --font: 'Work Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --tracking-tight: -0.025em;
+    --tracking-tighter: -0.035em;
+
+    /* Layout */
+    --max-w: 1140px;
+    --max-w-narrow: 720px;
+    --section-pad: clamp(80px, 10vw, 140px);
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: var(--font);
+    background: var(--off-white);
+    color: var(--text-primary);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+}
+
+img { display: block; max-width: 100%; height: auto; }
+
+a { color: inherit; text-decoration: none; transition: color 0.2s; }
+
+/* ============================================================
+   TYPOGRAPHY
+   ============================================================ */
+h1, h2, h3, h4 {
+    font-weight: 700;
+    letter-spacing: var(--tracking-tight);
+    line-height: 1.15;
+    color: var(--midnight);
+}
+
+h1 {
+    font-size: clamp(2.75rem, 5vw, 4.25rem);
+    font-weight: 800;
+    letter-spacing: var(--tracking-tighter);
+}
+
+h2 {
+    font-size: clamp(2rem, 3.5vw, 2.75rem);
+}
+
+h3 {
+    font-size: 1.375rem;
+    font-weight: 700;
+}
+
+.text-secondary { color: var(--text-secondary); }
+
+.lead {
+    font-size: clamp(1.125rem, 1.5vw, 1.3rem);
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+/* ============================================================
+   LAYOUT
+   ============================================================ */
+.container {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.container--narrow {
+    max-width: var(--max-w-narrow);
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.section-label {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--midnight);
+    background: var(--pale-blue-muted);
+    padding: 6px 14px;
+    border-radius: 999px;
+    margin-bottom: 20px;
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 16px 0;
+    background: rgba(250, 251, 252, 0.85);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 800;
+    font-size: 1.25rem;
+    letter-spacing: -0.5px;
+    color: var(--midnight);
+}
+
+.logo-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    box-shadow: var(--shadow-xs);
+}
+
+.nav-links { display: flex; gap: 28px; }
+
+.nav-links a {
+    font-weight: 600;
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+    transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--midnight); }
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: var(--midnight);
+    color: var(--white);
+    font-family: var(--font);
+    font-weight: 700;
+    font-size: 1.0625rem;
+    padding: 16px 32px;
+    border-radius: 14px;
+    border: none;
+    cursor: pointer;
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    text-decoration: none;
+}
+
+.btn-primary:hover {
+    background: var(--midnight-deep);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+    color: var(--white);
+}
+
+.btn-primary svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+    padding: clamp(60px, 10vw, 120px) 0 clamp(40px, 6vw, 80px);
+    background:
+        radial-gradient(ellipse 80% 60% at 70% 20%, var(--pale-blue-muted), transparent),
+        radial-gradient(ellipse 60% 50% at 20% 80%, var(--olive-muted), transparent),
+        var(--off-white);
+}
+
+.hero-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.hero-content {
+    flex: 1;
+    max-width: 580px;
+}
+
+.hero h1 { margin-bottom: 24px; }
+
+.hero .lead {
+    margin-bottom: 40px;
+}
+
+.hero-visual {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    perspective: 1200px;
+}
+
+.hero-mockup {
+    position: relative;
+    width: 280px;
+    height: 560px;
+    background: var(--midnight);
+    border-radius: 40px;
+    padding: 12px;
+    box-shadow: var(--shadow-xl);
+    transform: rotateY(-4deg) rotateX(2deg);
+    transition: transform 0.6s ease;
+}
+
+.hero-mockup:hover {
+    transform: rotateY(0deg) rotateX(0deg);
+}
+
+.hero-mockup-screen {
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    overflow: hidden;
+    background: var(--bg-warm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-mockup-screen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-fish-float {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    bottom: -30px;
+    right: -40px;
+    animation: float 4s ease-in-out infinite;
+    filter: drop-shadow(0 8px 16px rgba(0,0,0,0.12));
+    z-index: 2;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(-5deg); }
+    50% { transform: translateY(-12px) rotate(3deg); }
+}
+
+/* ============================================================
+   PHILOSOPHY — ZIG-ZAG
+   ============================================================ */
+.philosophy {
+    padding: var(--section-pad) 0;
+    background: var(--white);
+}
+
+.philosophy-intro {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 80px;
+}
+
+.philosophy-intro h2 { margin-bottom: 20px; }
+
+.philosophy-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+
+.philosophy-item {
+    background: var(--white);
+    padding: 160px 40px 72px 40px; /* Increased top padding to clear tall images */
+    border-radius: 24px;
+    border: 1px solid var(--card-stroke);
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    text-align: center;
+    margin-top: 80px; /* Push down grid to make room for taller top breakout */
+}
+
+.card-breakout-img {
+    position: absolute;
+    top: -80px; /* Move image higher up */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: auto;
+    z-index: 5;
+    filter: drop-shadow(0 8px 16px rgba(0,0,0,0.1));
+    pointer-events: none;
+}
+
+.philosophy-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 48px;
+    border-bottom-left-radius: 24px;
+    border-bottom-right-radius: 24px;
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320' preserveAspectRatio='none'%3E%3Cpath d='M0,160L48,176C96,192,192,224,288,213.3C384,203,480,149,576,149.3C672,149,768,203,864,224C960,245,1056,235,1152,197.3C1248,160,1344,96,1392,64L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'/%3E%3C/svg%3E");
+    -webkit-mask-size: 100% 100%;
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320' preserveAspectRatio='none'%3E%3Cpath d='M0,160L48,176C96,192,192,224,288,213.3C384,203,480,149,576,149.3C672,149,768,203,864,224C960,245,1056,235,1152,197.3C1248,160,1344,96,1392,64L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'/%3E%3C/svg%3E");
+    mask-size: 100% 100%;
+}
+
+.item-peach::after { background-color: var(--peach); }
+.item-blue::after { background-color: var(--pale-blue); }
+.item-olive::after { background-color: var(--olive); }
+
+.philosophy-item h3 {
+    font-size: 1.375rem;
+    margin-bottom: 12px;
+}
+
+.philosophy-item p {
+    font-size: 1.0625rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+
+
+/* Philosophy Callout Banner */
+.callout-banner {
+    margin-top: 80px;
+    padding: 48px 40px;
+    background: linear-gradient(135deg, var(--pale-blue-muted), var(--olive-muted));
+    border-radius: 24px;
+    text-align: center;
+    border: 1px solid rgba(198, 229, 255, 0.3);
+}
+
+.callout-banner p {
+    font-size: clamp(1.25rem, 2vw, 1.5rem);
+    font-weight: 600;
+    color: var(--midnight);
+    line-height: 1.5;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* ============================================================
+   METHODOLOGY — 2×3 CARD GRID
+   ============================================================ */
+.methodology {
+    padding: var(--section-pad) 0;
+    background: var(--off-white);
+}
+
+.methodology-intro {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 64px;
+}
+
+.methodology-intro h2 { margin-bottom: 16px; }
+
+.method-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.method-card {
+    background: var(--white);
+    border: 1px solid var(--card-stroke);
+    border-radius: 20px;
+    padding: 36px 28px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.method-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    border-radius: 20px 20px 0 0;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.method-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-md);
+}
+
+.method-card:hover::before { opacity: 1; }
+
+.method-card:nth-child(1)::before { background: var(--pale-blue); }
+.method-card:nth-child(2)::before { background: var(--olive); }
+.method-card:nth-child(3)::before { background: var(--peach); }
+.method-card:nth-child(4)::before { background: var(--lavender); }
+.method-card:nth-child(5)::before { background: var(--teal); }
+
+.method-card-emoji {
+    font-size: 2rem;
+    margin-bottom: 16px;
+    display: block;
+}
+
+.method-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 12px;
+    color: var(--midnight);
+}
+
+.method-card p {
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+}
+
+/* Span the last card across center if odd count */
+.method-card:nth-child(5) {
+    grid-column: 2 / 3;
+}
+
+/* Visual strip inside cards */
+.method-card-strip {
+    display: flex;
+    gap: 8px;
+    margin-top: 20px;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.method-card-strip img {
+    width: 56px;
+    height: 56px;
+    border-radius: 10px;
+    object-fit: cover;
+    box-shadow: var(--shadow-xs);
+}
+
+/* ============================================================
+   AUDIENCE — DARK SECTION
+   ============================================================ */
+.audience {
+    padding: var(--section-pad) 0;
+    background: var(--midnight);
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+}
+
+.audience::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(42, 157, 143, 0.15), transparent 70%);
+    pointer-events: none;
+}
+
+.audience-content {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.audience h2 {
+    color: var(--white);
+    margin-bottom: 28px;
+}
+
+.audience p {
+    font-size: 1.125rem;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.8;
+}
+
+
+
+/* ============================================================
+   WHY GERMAN — TYPOGRAPHY SECTION
+   ============================================================ */
+.why-german {
+    padding: var(--section-pad) 0;
+    background: var(--white);
+}
+
+.why-german-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.why-german-text h2 { margin-bottom: 24px; }
+
+.why-german-text p {
+    font-size: 1.0625rem;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    margin-bottom: 20px;
+}
+
+.compound-words {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 40px;
+    background: var(--bg-warm);
+    border-radius: 24px;
+    border: 1px solid var(--card-stroke);
+}
+
+.compound-word {
+    font-size: clamp(1.5rem, 2.5vw, 2.25rem);
+    font-weight: 800;
+    letter-spacing: var(--tracking-tighter);
+    color: var(--midnight);
+    line-height: 1.2;
+}
+
+.compound-word span {
+    opacity: 0.35;
+}
+
+.compound-word em {
+    font-style: normal;
+    color: var(--teal);
+    opacity: 1;
+}
+
+.compound-caption {
+    font-size: 0.875rem;
+    color: var(--text-tertiary);
+    margin-top: -8px;
+    padding-left: 2px;
+}
+
+/* ============================================================
+   MANIFESTO — ABOUT US
+   ============================================================ */
+.manifesto {
+    padding: var(--section-pad) 0;
+    background: var(--off-white);
+}
+
+.manifesto-letter {
+    max-width: 680px;
+    margin: 0 auto;
+    background: var(--white);
+    border: 1px solid var(--card-stroke);
+    border-radius: 24px;
+    padding: clamp(36px, 5vw, 64px);
+    box-shadow: var(--shadow-sm);
+}
+
+.manifesto-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: contain;
+    margin-bottom: 24px;
+    background: var(--pale-blue-muted);
+    padding: 4px;
+}
+
+.manifesto-letter h2 { margin-bottom: 8px; font-size: 1.75rem; }
+
+.manifesto-letter .subtitle {
+    font-size: 1.0625rem;
+    color: var(--text-tertiary);
+    margin-bottom: 28px;
+}
+
+.manifesto-letter p {
+    font-size: 1.0625rem;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    margin-bottom: 20px;
+}
+
+.manifesto-letter h3 {
+    font-size: 1.25rem;
+    margin-top: 36px;
+    margin-bottom: 20px;
+}
+
+/* Roadmap Pills */
+.roadmap-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+    list-style: none;
+}
+
+.roadmap-pills li {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    background: var(--off-white);
+    border: 1px solid var(--card-stroke);
+    border-radius: 999px;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    white-space: nowrap;
+}
+
+.manifesto-closing {
+    margin-top: 36px;
+    padding-top: 28px;
+    border-top: 1px solid var(--card-stroke);
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: var(--midnight);
+}
+
+/* ============================================================
+   FINAL CTA
+   ============================================================ */
+.cta-section {
+    padding: var(--section-pad) 0;
+    background:
+        radial-gradient(ellipse 70% 50% at 30% 50%, var(--pale-blue-muted), transparent),
+        radial-gradient(ellipse 60% 40% at 70% 60%, var(--olive-muted), transparent),
+        var(--bg-warm);
+    text-align: center;
+}
+
+.cta-content {
+    max-width: 560px;
+    margin: 0 auto;
+}
+
+.cta-content h2 { margin-bottom: 16px; }
+
+.cta-content .lead { margin-bottom: 36px; }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer {
+    padding: 48px 0 36px;
+    background: var(--white);
+    border-top: 1px solid var(--card-stroke);
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 24px;
+}
+
+.footer-left { display: flex; flex-direction: column; gap: 12px; }
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 800;
+    font-size: 1.125rem;
+    color: var(--midnight);
+}
+
+.footer-icon { width: 22px; height: 22px; border-radius: 5px; }
+
+.footer-left p { margin: 0; font-size: 0.8125rem; color: var(--text-tertiary); }
+
+.footer-links { display: flex; gap: 20px; }
+
+.footer-links a {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.footer-links a:hover { color: var(--midnight); }
+
+/* ============================================================
+   PRIVACY PAGE
+   ============================================================ */
+.privacy-content {
+    padding: 60px 0;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.privacy-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+}
+
+.privacy-content h2 {
+    font-size: 1.5rem;
+    margin-top: 40px;
+    margin-bottom: 16px;
+    font-weight: 600;
+}
+
+.privacy-content p, .privacy-content li {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+}
+
+.privacy-content ul {
+    margin-left: 24px;
+    margin-bottom: 24px;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 900px) {
+    .hero-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .method-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .method-card:nth-child(5) {
+        grid-column: auto;
+    }
+    .why-german-layout {
+        grid-template-columns: 1fr;
+        gap: 48px;
+    }
+    .philosophy-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .method-grid {
+        grid-template-columns: 1fr;
+    }
+    .hero-mockup {
+        width: 240px;
+        height: 480px;
+    }
+    .compound-words { padding: 24px; }
+    .manifesto-letter { padding: 28px; }
+    .nav-links { gap: 16px; }
+    .nav-links a { font-size: 0.875rem; }
+    .callout-banner { padding: 32px 24px; }
+    .footer-container { flex-direction: column; align-items: flex-start; }
+}
