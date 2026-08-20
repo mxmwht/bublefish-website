@@ -19,6 +19,11 @@
                 <img src="icon.png" alt="Bublefish" class="logo-icon">
                 Bublefish
             </a>
+            <button class="mobile-toggle" aria-label="Toggle Menu">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                </svg>
+            </button>
             <nav class="nav-links">
                 <a href="#philosophy">Philosophy</a>
                 <a href="#methodology">Methodology</a>
@@ -297,6 +302,33 @@
                     }, 600);
                 });
             }
+        });
+    </script>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileToggle = document.querySelector('.mobile-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('nav-open');
+            mobileToggle.classList.toggle('is-active');
+            
+            // Swap SVG between hamburger and close icon
+            if (mobileToggle.classList.contains('is-active')) {
+                mobileToggle.innerHTML = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>`;
+            } else {
+                mobileToggle.innerHTML = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>`;
+            }
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('nav-open');
+                mobileToggle.classList.remove('is-active');
+                mobileToggle.innerHTML = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>`;
+            });
         });
     </script>
 </body>
