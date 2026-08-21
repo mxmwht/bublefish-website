@@ -877,3 +877,22 @@ footer {
     h1 { font-size: 2.8rem; }
     h2 { font-size: 2rem; }
 }
+
+/* App Store Badge */
+.app-store-badge {
+    display: inline-block;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.app-store-badge img {
+    height: 56px; /* Apple recommended size */
+    width: auto;
+}
+.app-store-badge:hover {
+    transform: scale(1.03);
+    opacity: 0.95;
+}
+@media (max-width: 768px) {
+    .app-store-badge img {
+        height: 48px;
+    }
+}
