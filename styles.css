@@ -896,3 +896,20 @@ footer {
         height: 48px;
     }
 }
+
+/* CTA Grouping */
+.cta-group {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 32px;
+}
+@media (max-width: 768px) {
+    .cta-group {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .cta-group .btn-primary {
+        width: 100%;
+    }
+}
